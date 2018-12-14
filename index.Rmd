@@ -218,11 +218,11 @@ server <- function(input, output) {
 
 class: center, middle, inverse
 
-# Como funciona una app de Shiny
+# Funcionamiento de una app de Shiny
 
 ---
 
-# ¿Cómo? 
+# App
 
 ![](imgs/shiny_works/Diapositiva1.PNG)
 
