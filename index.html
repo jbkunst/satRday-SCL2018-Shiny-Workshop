@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Workshop Shiny</title>
+    <title>Workshop Creación de aplicaciones interactivas con Shiny</title>
     <meta charset="utf-8">
     <meta name="author" content="Joshua Kunst" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
@@ -13,8 +13,8 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Workshop Shiny
-## 01 - Introducción a Shiny<br/>satRday Santiago
+# Workshop<br>Creación de aplicaciones<br>interactivas con Shiny
+## satRday Santiago 2018
 ### Joshua Kunst
 
 ---
@@ -22,8 +22,13 @@ class: center, middle, inverse, title-slide
 
 
 
+class: center, middle, inverse
+
 # Antes de Partir
 
+---
+
+# Supuestos
 
 Asumimos que tenemos conocimiento de como funciona R, paquetes, funciones, etc.
 
@@ -46,6 +51,27 @@ install.packages(
 
 ---
 
+# Ayuda
+
+
+No olvidar que una buena forma de aprender es con la documentación oficial:
+
+
+https://shiny.rstudio.com/tutorial/
+
+https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/
+
+https://github.com/rstudio/cheatsheets/raw/master/shiny.pdf
+
+https://github.com/rstudio/cheatsheets/raw/master/translations/spanish/shiny_Spanish.pdf
+
+
+
+
+
+
+---
+
 class: center, middle, inverse
 
 # ¿Qué es una __app__(licación) web?
@@ -64,14 +90,14 @@ a un servidor web a través de internet o de una intranet mediante un navegador.
 
 # Aplicación Web
 
-[:scale 80%](imgs/otraapp.png)
+&lt;img src="imgs/otraapp.png" width="80%"&gt;
 
 App con mas `input`s y `output`s
 
 
 ---
 
-# La estructura general de una ShinyApp
+# La estructura de una ShinyApp
 
 &lt;br&gt;
 
@@ -89,7 +115,7 @@ runApp(list(ui = ui, server = server))
 
 ---
 
-# La estructura general de una ShinyApp
+# La estructura de una ShinyApp
 
 &lt;br&gt;
 
@@ -117,7 +143,7 @@ Que se refiere la disposición de nuestros `inputs` y `outputs`
 
 ---
 
-# La estructura general de una ShinyApp
+# La estructura de una ShinyApp
 
 &lt;br&gt;
 
@@ -135,12 +161,12 @@ runApp(list(ui = ui, server = server))
 &lt;br&gt;
 
 - Se define el `server` en donde estará toda la lógica de nuestra aplicación.
-- Generalmente serán instrucciones que dependeran de `inputs` 
+-mente serán instrucciones que dependeran de `inputs` 
 
 
 ---
 
-# La estructura general de una ShinyApp
+# La estructura de una ShinyApp
 
 &lt;br&gt;
 
