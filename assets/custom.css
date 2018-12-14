@@ -12,7 +12,16 @@
 }
 
 p, ul > li {
-    font-size: 1.3em;
+    font-size: 1.0em;
+}
+
+li {
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+}
+
+pre > b {
+    color: #112940; /* https://www.colorhexa.com/dba675 */
 }
 
 .inverse {
