@@ -1,0 +1,156 @@
+---
+title: "Workshop Shiny"
+subtitle: "01 - Introducción a Shiny<br/>satRday Santiago"
+author: "Joshua Kunst"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default", "metropolis", "metropolis-fonts", "assets/custom.css"]
+    nature:
+      beforeInit: "assets/macros.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+# Antes de Partir
+
+
+Asumimos que tenemos conocimiento de como funciona R, paquetes, funciones, etc.
+
+
+No es necesario pero usaremos dplyr y ggplot principalmente para hacer manipulación
+y visualización de los datos
+
+
+Necesitaremos algunos paquetes: 
+
+
+```{r, eval=FALSE}
+install.packages(
+  c("tidyverse", "shiny", "shinythemes", "shinyWidgets",
+    "shinydashboard", "DT", "leaflet", "plotly")
+  )
+```
+
+
+---
+
+class: center, middle, inverse
+
+# ¿Qué es una __app__(licación) web?
+
+---
+
+# Aplicación Web
+
+![](imgs/miprimerapp.png)
+
+(Wikipedia:) Herramientas que los usuarios pueden utilizar accediendo 
+a un servidor web a través de internet o de una intranet mediante un navegador.
+
+
+---
+
+# Aplicación Web
+
+[:scale 80%](imgs/otraapp.png)
+
+App con mas `input`s y `output`s
+
+
+---
+
+# La estructura general de una ShinyApp
+
+<br>
+
+```{r, eval=FALSE}
+library(shiny)
+
+ui <- fluidPage()
+
+server <- function(input, output) {}
+
+runApp(list(ui = ui, server = server)) 
+```
+
+
+---
+
+# La estructura general de una ShinyApp
+
+<br>
+
+
+```{r, eval=FALSE}
+library(shiny)
+
+ui <- fluidPage()                            #<<
+
+server <- function(input, output) {}
+
+runApp(list(ui = ui, server = server)) 
+```
+
+
+<br>
+
+- Se define una interfaz de usuario (user interface). En adelante `ui`
+- En este caso es una página fluida vacía `fluidPage()`
+- En el futuro acá definiremos diseño/estructura de nuestra aplicación (_layout_).
+Que se refiere la disposición de nuestros `inputs` y `outputs`
+
+
+
+---
+
+# La estructura general de una ShinyApp
+
+<br>
+
+```{r, eval=FALSE}
+library(shiny)
+
+ui <- fluidPage()                            
+
+server <- function(input, output) {}         #<<
+
+runApp(list(ui = ui, server = server)) 
+```
+
+<br>
+
+- Se define el `server` en donde estará toda la lógica de nuestra aplicación.
+- Generalmente serán instrucciones que dependeran de `inputs` 
+
+
+---
+
+# La estructura general de una ShinyApp
+
+<br>
+
+```{r, eval=FALSE}
+library(shiny)
+
+ui <- fluidPage()                            
+
+server <- function(input, output) {}         
+
+runApp(list(ui = ui, server = server))       #<<
+```
+
+<br>
+
+- `runApp` es la funcion que crea y deja corriendo la app con los 
+parámetros otorgados.
+- **No siempre** tendremos que escribirla pues veremos que RStudio
+al crear una shinyApp nos pondrà un botón para _servir_ la aplicación
+

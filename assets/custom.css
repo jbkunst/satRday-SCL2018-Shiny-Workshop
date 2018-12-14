@@ -1,0 +1,24 @@
+.title-slide {
+  background-image: url("shiny.png"), url("satrday30.png");
+  background-size:  17%, 25%, cover;
+  background-position: 88% 14%, 70% 10%;
+  background-repeat: no-repeat;
+}
+
+.title-slide > h1,
+.title-slide > h2,
+.title-slide > h3 {
+  color: #fff;
+}
+
+p, ul > li {
+    font-size: 1.3em;
+}
+
+.inverse {
+    background-color: #75aadb;
+}
+
+.remark-slide-content {
+    border-top: 80px solid #75aadb;
+}
