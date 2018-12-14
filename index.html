@@ -28,7 +28,7 @@ class: center, middle, inverse
 
 ---
 
-# Supuestos
+# Antes de Partir
 
 Asumimos que tenemos conocimiento de como funciona R, paquetes, funciones, etc.
 
@@ -49,9 +49,12 @@ install.packages(
 ```
 
 
-La prestación podrá acceder desde http://jbkunst.github.io/satRday-SCL2018-Shiny-Workshop
+La prestación podrá acceder desde http://jbkunst.github.io/satRday-SCL2018-Shiny-Workshop y el código fuentes,
+apps, ejemplos en https://github.com/jbkunst/satRday-SCL2018-Shiny-Workshop
 
-Y el codigo fuentes, apps, ejemplos en https://github.com/jbkunst/satRday-SCL2018-Shiny-Workshop
+
+Esto no es más que el comienzo; abordaremos lo necesario para que tu puedas avanzar 
+más más allá!!
 
 
 ---
@@ -628,7 +631,6 @@ server &lt;- function(input, output) {
 - ¿Necesitas más? https://gallery.shinyapps.io/065-update-input-demo/ y `shinyWidgets::shinyWidgetsGallery()` 
 
 
-
 ---
 
 class: center, middle, inverse
@@ -643,7 +645,7 @@ class: center, middle, inverse
 
 Haga click en:
 
-- _File_, luego _New File_ y __Shiny Web App_, seleccione el nombre
+- _File_, luego _New File_ y _Shiny Web App_, seleccione el nombre
 - Ejecutela con _Run App_ e intearctúe
 - Luego modifique y cree una app que contenga:
   - 2 inputs, un `sliderInput` y un `textInput` 
@@ -654,10 +656,138 @@ dos inputs
 
 Hints importantes:
 
-
 - No tema a escribir, ni preguntar!
 - Está totalmente permitido equivocarse, de hecho se pondrán puntos extras
 - Posible solución estará en https://github.com/jbkunst/satRday-SCL2018-Shiny-Workshop/tree/master/apps/02-ejercicio-2
+
+
+---
+
+class: center, middle, inverse
+
+# Layouts, HTMLWidgets y Diseño
+
+---
+
+# Tipos de Layouts
+
+
+Dependiendo de las necesidaes puede ser convenientes algunos
+tipos de layuts sobre otros
+
+Recorreremos algunos más comunes
+
+
+---
+
+# sidebarLayout
+
+El más usuado, generalmente los inputs están agrupados a mano izquierda y 
+
+
+```r
+library(shiny)
+
+ui &lt;- fluidPage(
+  titlePanel("Hello Shiny!"),
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("obs", "Number of observations:", min = 0, max = 1000, value = 500)
+    ),
+    mainPanel(plotOutput("distPlot"))
+  )
+)
+
+server &lt;- function(input, output) {
+  output$distPlot &lt;- renderPlot({ hist(rnorm(input$obs)) })
+}
+
+shinyApp(ui, server)
+```
+
+---
+
+# sidebarLayout
+
+El más usuado, generalmente los inputs están agrupados a mano izquierda y 
+
+![](imgs/sidebar.png)
+
+
+---
+
+# tabsetPanel
+
+Los tabs son útiles para separar secciones en nuestra app
+
+
+```r
+library(shiny)
+
+ui &lt;- fluidPage(
+  titlePanel("Hello Shiny!"),
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("obs", "Number of observations:", min = 0, max = 1000, value = 500)
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Plot", plotOutput("plot")),
+        tabPanel("Summary", verbatimTextOutput("summary")),
+        tabPanel("Table", "tabla")
+      )
+    )
+  )
+)
+
+server &lt;- function(input, output) {
+  output$plot &lt;- renderPlot({ hist(rnorm(input$obs)) })
+  output$summary &lt;- renderText({ input$obs })
+}
+
+shinyApp(ui, server)
+```
+
+```
+## 
+## Listening on http://127.0.0.1:8577
+```
+
+```
+## 
+## 
+## processing file: index.Rmd
+```
+
+```
+## &lt;simpleError in parse_block(g[-1], g[1], params.src): duplicate label 'setup'&gt;
+```
+
+```
+## 
+## * Retrying in 2 seconds...
+```
+
+![](index_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+
+
+---
+
+# tabsetPanel
+
+Los tabs son útiles para separar secciones en nuestra app 
+
+![](imgs/tabs.png)
+
+
+---
+
+# HTMLWidgets
+
+
+---
+
+#
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
