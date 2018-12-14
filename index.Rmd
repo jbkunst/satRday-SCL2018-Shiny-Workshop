@@ -30,8 +30,8 @@ class: center, middle, inverse
 Asumimos que tenemos conocimiento de como funciona R, paquetes, funciones, etc.
 
 
-No es necesario pero usaremos dplyr y ggplot principalmente para hacer manipulación
-y visualización de los datos
+No es necesario en `shiny` pero usaremos los paquetes `dplyr` y `ggplot` principalmente
+para hacer manipulación y visualización de los datos
 
 
 Necesitaremos algunos paquetes: 
@@ -60,10 +60,6 @@ https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/
 https://github.com/rstudio/cheatsheets/raw/master/shiny.pdf
 
 https://github.com/rstudio/cheatsheets/raw/master/translations/spanish/shiny_Spanish.pdf
-
-
-
-
 
 
 ---
