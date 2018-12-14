@@ -45,6 +45,11 @@ install.packages(
 ```
 
 
+La prestación podrá acceder desde http://jbkunst.github.io/satRday-SCL2018-Shiny-Workshop
+
+Y el codigo fuentes, apps, ejemplos en https://github.com/jbkunst/satRday-SCL2018-Shiny-Workshop
+
+
 ---
 
 # Ayuda
@@ -637,6 +642,7 @@ Hints importantes:
 
 - No tema a escribir, ni preguntar!
 - Está totalmente permitido equivocarse, de hecho se pondrán puntos extras
+- Posible solución estará en https://github.com/jbkunst/satRday-SCL2018-Shiny-Workshop/tree/master/apps/02-ejercicio-2
 
 
 
