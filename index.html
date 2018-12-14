@@ -33,8 +33,8 @@ class: center, middle, inverse
 Asumimos que tenemos conocimiento de como funciona R, paquetes, funciones, etc.
 
 
-No es necesario pero usaremos dplyr y ggplot principalmente para hacer manipulación
-y visualización de los datos
+No es necesario en `shiny` pero usaremos los paquetes `dplyr` y `ggplot` principalmente
+para hacer manipulación y visualización de los datos
 
 
 Necesitaremos algunos paquetes: 
@@ -66,10 +66,6 @@ https://github.com/rstudio/cheatsheets/raw/master/shiny.pdf
 https://github.com/rstudio/cheatsheets/raw/master/translations/spanish/shiny_Spanish.pdf
 
 
-
-
-
-
 ---
 
 class: center, middle, inverse
@@ -80,19 +76,21 @@ class: center, middle, inverse
 
 # Aplicación Web
 
-![](imgs/miprimerapp.png)
-
 (Wikipedia:) Herramientas que los usuarios pueden utilizar accediendo 
 a un servidor web a través de internet o de una intranet mediante un navegador.
+
+
+![](imgs/miprimerapp.png)
+
 
 
 ---
 
 # Aplicación Web
 
-&lt;img src="imgs/otraapp.png" width="80%"&gt;
-
 App con mas `input`s y `output`s
+
+![](imgs/otraapp.png)
 
 
 ---
@@ -187,10 +185,95 @@ server &lt;- function(input, output) {}
 parámetros otorgados.
 - **No siempre** tendremos que escribirla pues veremos que RStudio
 al crear una shinyApp nos pondrà un botón para _servir_ la aplicación
+
+
+---
+
+class: center, middle, inverse
+
+# Ejercicio #1
+
+---
+
+# Nuestra primer App andando
+
+Abrir un script en R y usando la ya revisado hacer _correr_: 
+
+
+```r
+ui &lt;- fluidPage(
+   sidebarLayout(
+      sidebarPanel(
+        sliderInput("nrand", "Simulaciones",
+                    min = 50, max = 100, value = 70),
+        selectInput("col", "Color", c("red", "blue", "black")),
+        checkboxInput("punto", "Puntos:", value = FALSE)
+      ),
+      mainPanel(plotOutput("outplot"))
+   )
+)
+
+server &lt;- function(input, output) {
+   output$outplot &lt;- renderPlot({
+     set.seed(123)
+     x &lt;- rnorm(input$nrand)
+     t &lt;- ifelse(input$punto, "b", "l")
+     plot(x, type = t, col = input$col)
+   })
+}
+```
+
+---
+
+class: center, middle, inverse
+
+# Como funciona una app de Shiny
+
+---
+
+# ¿Cómo? 
+
+![](imgs/shiny_works/Diapositiva1.PNG)
+
+---
+
+# Contenedor 
+
+![](imgs/shiny_works/Diapositiva2.PNG)
+
+---
+
+# Otros contenedores 
+
+![](imgs/shiny_works/Diapositiva3.PNG)
+
+---
+
+# Inputs 
+
+![](imgs/shiny_works/Diapositiva4.PNG)
+
+---
+
+# Outputs
+
+![](imgs/shiny_works/Diapositiva5.PNG)
+
+---
+
+# Interacción 
+
+![](imgs/shiny_works/Diapositiva6.PNG)
+
+---
+
+# Resultado
+
+![](imgs/shiny_works/Diapositiva7.PNG)
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script src="assets/macros.js"></script>
 <script>var slideshow = remark.create({
+"ratio": "16:9",
 "highlightStyle": "github",
 "highlightLines": true,
 "countIncrementalSlides": false
